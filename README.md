@@ -41,7 +41,7 @@ Then open your browser at: [https://127.0.0.1:8000](https://127.0.0.1:8000)
 
 ---
 
-## ⌨️ Keyboard Controls
+## Keyboard Controls
 
 | Key | Action |
 |-----|--------|
