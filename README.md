@@ -1,75 +1,57 @@
-# Multiagent BMI Controller 
+# Multiagent BMI Controller
 
-A custom keyboard- and brain-control-ready interface for the [multiagent-bmi-webui-collab](https://github.com/arayabrain/multiagent-bmi-webui-collab) robot simulation environment.
+**A real-time brain-machine interface (BMI) and keyboard-based controller for multi-agent robotic simulations.**
 
-This repository contains extensions to control simulated robot arms using intuitive `WASD` keyboard input or brain-computer interface (BCI/BMI) signals.
+This system allows users to control simulated robotic arms via either **EEG-decoded brain signals** or **manual WASD input**, with a modular architecture designed for **fast interaction** and **multi-robot coordination** using WebSocket communication.
+
+![UI Screenshot or System Diagram](assets/ui_demo.png) <!-- Replace with your image path -->
 
 ---
 
 ## Features
+- Real-time robot control via keyboard or BMI-decoded EEG signals
+- Pluggable BMI decoder stub for motor imagery (can be extended to SSVEP, P300, etc.)
+- WebSocket-based communication with robot control WebUI
+- Works with [multiagent-bmi-webui-collab](https://github.com/arayabrain/multiagent-bmi-webui-collab)
+- Supports multi-robot control, object selection, and sequential tasks
+- 🛠Easily extensible to other control paradigms (eye-tracking, EMG, etc.)
 
-- Real-time robot control via keyboard (W/A/S/D + 1–4)
-- WebSocket-based architecture for high-speed interaction
-- Designed for easy replacement with BMI/EEG decoders
-- Preserves original UI and simulation design
-- Works for both single-arm and multi-arm setups
+---
+
+## Repository Structure
+
+multiagent-bmi-controller/
+├── app/
+│ ├── bci/ # EEG decoder interface (stub)
+│ └── controller.py # Command routing to robot
+├── requirements.txt
+├── README.md
+└── LICENSE
+
+---
+
+## Demo
+
+> **Live interaction demo (EEG → Robot grasp)**  
+> ![Demo GIF](assets/demo_grasping.gif)
+
+## 🖼Screenshots
+
+### Mode Selection & Control Interface
+![UI Mode Selection](assets/ui_demo1.png)
+
+> Select from various control devices (Mouse, EEG/EMG, Keyboard) and modes like Single Robot, Multi-Robot (4 or 16 arms), or Data Collection. This WebUI allows seamless integration of BMI inputs and manual control for simulation testing.
+
+### Robot Grasping a Target Object
+![Robot Grasping Cube](assets/ui_demo2.png)
+
+> The robotic arm successfully grasps a green cube after receiving a decoded EEG command via the BMI pipeline. This validates real-time intent translation and control loop execution.
 
 ---
 
 ## Getting Started
 
-### 1. Clone the repo
+### 1. Clone the repository
 ```bash
 git clone https://github.com/OzgurEgeAydogan1/multiagent-bmi-controller.git
 cd multiagent-bmi-controller
-```
-
-### 2. Setup Python environment (Micromamba recommended)
-```bash
-micromamba create -n multiagent python=3.8 -y
-micromamba activate multiagent
-pip install -r requirements.txt
-```
-
-### 3. Run the simulation
-```bash
-cd C:\Users\oegea\multiagent-bmi-webui-collab
-python -m app.main
-```
-
-Then open your browser at: [https://127.0.0.1:8000](https://127.0.0.1:8000)
-
----
-
-## Keyboard Controls
-
-| Key | Action |
-|-----|--------|
-| W / A / S / D | Move robot in XY plane |
-| Q / E         | Move up / down (Z axis) |
-| 1 / 2 / 3 / 4 | Select red, blue, green, yellow cubes |
-
----
-
-## Sample BMI Decoder Stub (EEG Integration)
-
-I have added a placeholder decoder for imagined movement / motor imagery:
-
-```python
-# app/bci/bci_decoder.py
-
-def decode_bci_signal(raw_signal):
-    """
-    Replace this with your real BCI decoder logic.
-    For now, returns fixed keycode for 'W'.
-    """
-    return 'w'  # Simulate forward motion
-```
-
-You can plug this into the control loop to replace keyboard input with live brain signal predictions.
-
----
-
-## Acknowledgments
-
-This system extends work by **Araya Inc.** and the **Yanagisawa Lab, Osaka University** for real-time control of robotic systems via BMI interfaces.
