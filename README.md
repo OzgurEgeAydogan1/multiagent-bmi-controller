@@ -4,8 +4,6 @@
 
 This system allows users to control simulated robotic arms via either **EEG-decoded brain signals** or **manual WASD input**, with a modular architecture designed for **fast interaction** and **multi-robot coordination** using WebSocket communication.
 
-![UI Screenshot or System Diagram](assets/ui_demo.png) <!-- Replace with your image path -->
-
 ---
 
 ## Features
