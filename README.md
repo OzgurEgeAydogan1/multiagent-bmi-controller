@@ -14,7 +14,7 @@ This system allows users to control simulated robotic arms via either **EEG-deco
 - WebSocket-based communication with robot control WebUI
 - Works with [multiagent-bmi-webui-collab](https://github.com/arayabrain/multiagent-bmi-webui-collab)
 - Supports multi-robot control, object selection, and sequential tasks
-- 🛠Easily extensible to other control paradigms (eye-tracking, EMG, etc.)
+- Easily extensible to other control paradigms (eye-tracking, EMG, etc.)
 
 ---
 
@@ -35,7 +35,7 @@ multiagent-bmi-controller/
 > **Live interaction demo (EEG → Robot grasp)**  
 > ![Demo GIF](assets/demo_grasping.gif)
 
-## 🖼Screenshots
+## Screenshots
 
 ### Mode Selection & Control Interface
 ![UI Mode Selection](assets/ui_demo1.png)
